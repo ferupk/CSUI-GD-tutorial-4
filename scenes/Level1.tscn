@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://yqmk0vpvnyxr"]
+[gd_scene load_steps=9 format=4 uid="uid://yqmk0vpvnyxr"]
 
 [ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/Player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://cluh2ekc38ktx" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_dirt.png" id="2_la3nk"]
 [ext_resource type="PackedScene" uid="uid://b1mt0bxm8wg2b" path="res://scenes/SceneChanger.tscn" id="3_fttfb"]
 [ext_resource type="Texture2D" uid="uid://chgqimvh7rdh6" path="res://assets/Familiar Looking Rocket.png" id="4_3hmll"]
+[ext_resource type="PackedScene" uid="uid://c07ekl6lwxi2u" path="res://scenes/Fish.tscn" id="5_cv0pg"]
+[ext_resource type="Script" path="res://scenes/Spawner.gd" id="6_sheaq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bp4ro"]
 texture = ExtResource("2_la3nk")
@@ -76,3 +78,8 @@ z_index = -1
 position = Vector2(0.00012207, -11)
 scale = Vector2(0.4, 0.2)
 texture = ExtResource("4_3hmll")
+
+[node name="FishSpawner" type="Node2D" parent="."]
+position = Vector2(556, -85)
+script = ExtResource("6_sheaq")
+obstacle = ExtResource("5_cv0pg")
