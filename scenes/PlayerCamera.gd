@@ -1,13 +1,16 @@
 extends Camera2D
 
-const LOOK_AHEAD_FACTOR = 0.08
+const LOOK_AHEAD_FACTOR = 0.1
 const SHIFT_TRANS = Tween.TRANS_SINE
 const SHIFT_EASE = Tween.EASE_OUT
-const SHIFT_DURATION = 1.0
+const SHIFT_DURATION = 1.2
 
 var facing = 0
 @onready var prev_camera_pos = get_screen_center_position()
 @onready var tween: Tween
+
+func _ready() -> void:
+	reset_smoothing()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
