@@ -27,6 +27,9 @@ func _check_facing():
 		var target_offset = get_viewport_rect().size.x * LOOK_AHEAD_FACTOR * facing
 
 		tween = create_tween()
-		tween.tween_property(self, "position:x", target_offset, SHIFT_DURATION) \
-		.set_trans(SHIFT_TRANS) \
-		.set_ease(SHIFT_EASE)
+		(
+			tween
+			. tween_property(self, "position:x", target_offset, SHIFT_DURATION)
+			. set_trans(SHIFT_TRANS)
+			. set_ease(SHIFT_EASE)
+		)
