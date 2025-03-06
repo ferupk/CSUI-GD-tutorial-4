@@ -23,7 +23,6 @@ func _process(_delta: float) -> void:
 			spawn_guide.global_position.y = next_position
 		else:
 			spawn_guide.global_position.y = self.get_global_transform().origin[1]
-	pass
 
 
 func spawn():
