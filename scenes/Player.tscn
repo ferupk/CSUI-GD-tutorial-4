@@ -80,7 +80,5 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
-limit_left = -384
-limit_top = -64
-limit_right = 1536
-limit_bottom = 704
+limit_left = 0
+limit_bottom = 512
