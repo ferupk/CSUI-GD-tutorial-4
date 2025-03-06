@@ -90,7 +90,6 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_horizontal_offset = -1.0
 drag_left_margin = 0.05
-drag_top_margin = 0.25
 drag_right_margin = 0.05
 drag_bottom_margin = 0.0
 editor_draw_limits = true
