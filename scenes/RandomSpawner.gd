@@ -1,10 +1,11 @@
 extends Node2D
 
-@export var obstacle : PackedScene
+@export var obstacle: PackedScene
 @export var spawn_range = 1000
 @export var view_guide = true
 
 @onready var spawn_guide = $SpawnerGuide
+
 
 func _ready():
 	if view_guide:
@@ -14,7 +15,8 @@ func _ready():
 		spawn_guide.visible = false
 	repeat()
 
-func _process(delta: float) -> void:
+
+func _process(_delta: float) -> void:
 	if view_guide:
 		var next_position = -get_viewport_transform().origin[1] + 16
 		if next_position > self.get_global_transform().origin[1]:
@@ -22,6 +24,7 @@ func _process(delta: float) -> void:
 		else:
 			spawn_guide.global_position.y = self.get_global_transform().origin[1]
 	pass
+
 
 func spawn():
 	var spawned = obstacle.instantiate()
@@ -31,6 +34,7 @@ func spawn():
 	spawn_pos.x = spawn_pos.x + randf_range(-spawn_range, spawn_range)
 
 	spawned.global_position = spawn_pos
+
 
 func repeat():
 	spawn()
