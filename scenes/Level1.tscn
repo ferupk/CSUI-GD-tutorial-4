@@ -95,7 +95,7 @@ scale = Vector2(149, 1)
 [node name="WinCondition" parent="." instance=ExtResource("3_fttfb")]
 position = Vector2(8416, -10)
 scale = Vector2(1, 2)
-scene_name = "WinScreen"
+scene_name = "Level2"
 
 [node name="FamiliarLookingRocket" type="Sprite2D" parent="WinCondition"]
 z_index = -1
