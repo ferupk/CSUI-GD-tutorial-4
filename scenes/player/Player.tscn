@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_xsgpf"]
 [ext_resource type="Texture2D" uid="uid://dhsqj8dybb7fq" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_alien.png" id="2"]
-[ext_resource type="Script" path="res://scenes/PlayerCamera.gd" id="3_u8esg"]
+[ext_resource type="Script" path="res://scenes/player/PlayerCamera.gd" id="3_u8esg"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(52.924, 76.884)

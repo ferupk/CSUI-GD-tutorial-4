@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://blcfbk7gt6ut4"]
 
-[ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/Player.tscn" id="1_25qal"]
+[ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/player/Player.tscn" id="1_25qal"]
 [ext_resource type="Texture2D" uid="uid://ce3cnsg6oo47k" path="res://assets/Thanshuny-Wolf Platformer Tilemap.png" id="2_nuwn7"]
 [ext_resource type="PackedScene" uid="uid://cwwi0q43m4y78" path="res://scenes/spawners/SawSpawner.tscn" id="3_4qsy5"]
 [ext_resource type="PackedScene" uid="uid://b1mt0bxm8wg2b" path="res://scenes/utils/SceneChanger.tscn" id="4_antf6"]

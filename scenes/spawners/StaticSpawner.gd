@@ -14,7 +14,7 @@ func _ready():
 
 	if start_offset:
 		await get_tree().create_timer(start_offset).timeout
-	
+
 	repeat()
 
 

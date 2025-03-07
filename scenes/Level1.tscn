@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=4 uid="uid://yqmk0vpvnyxr"]
 
-[ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/Player.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/player/Player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://cluh2ekc38ktx" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_dirt.png" id="2_la3nk"]
 [ext_resource type="PackedScene" uid="uid://b1mt0bxm8wg2b" path="res://scenes/utils/SceneChanger.tscn" id="3_fttfb"]
 [ext_resource type="Texture2D" uid="uid://c2elrwhkhqssr" path="res://assets/spritesheet_gr_dirt_ALT.png" id="3_p5ewe"]
