@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://b8ht7fx7phrhf"]
 
-[ext_resource type="Script" path="res://scenes/RandomSpawner.gd" id="1_3r2c1"]
+[ext_resource type="Script" path="res://scenes/spawners/RandomSpawner.gd" id="1_3r2c1"]
 [ext_resource type="Texture2D" uid="uid://hp3lkv6hxxmx" path="res://assets/Spawner Guide.png" id="2_oxt1i"]
-[ext_resource type="PackedScene" uid="uid://c07ekl6lwxi2u" path="res://scenes/Fish.tscn" id="2_uos50"]
+[ext_resource type="PackedScene" uid="uid://c07ekl6lwxi2u" path="res://scenes/obstacles/Fish.tscn" id="2_uos50"]
 
 [node name="FishSpawner" type="Node2D"]
 script = ExtResource("1_3r2c1")

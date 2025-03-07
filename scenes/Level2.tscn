@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/Player.tscn" id="1_25qal"]
 [ext_resource type="Texture2D" uid="uid://ce3cnsg6oo47k" path="res://assets/Thanshuny-Wolf Platformer Tilemap.png" id="2_nuwn7"]
-[ext_resource type="PackedScene" uid="uid://cwwi0q43m4y78" path="res://scenes/SawSpawner.tscn" id="3_4qsy5"]
-[ext_resource type="PackedScene" uid="uid://b1mt0bxm8wg2b" path="res://scenes/SceneChanger.tscn" id="4_antf6"]
+[ext_resource type="PackedScene" uid="uid://cwwi0q43m4y78" path="res://scenes/spawners/SawSpawner.tscn" id="3_4qsy5"]
+[ext_resource type="PackedScene" uid="uid://b1mt0bxm8wg2b" path="res://scenes/utils/SceneChanger.tscn" id="4_antf6"]
 [ext_resource type="Texture2D" uid="uid://chgqimvh7rdh6" path="res://assets/Familiar Looking Rocket.png" id="5_g0tbl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1r6ia"]
@@ -141,18 +141,18 @@ spawn_interval = 1.5
 position = Vector2(7235, -443)
 spawn_interval = 3.5
 
-[node name="DeathPlane" parent="." instance=ExtResource("4_antf6")]
-position = Vector2(4323, 673)
-scale = Vector2(137, 1)
-scene_name = "Level2"
-
-[node name="WinCondition" parent="." instance=ExtResource("4_antf6")]
+[node name="RocketGoal" parent="." instance=ExtResource("4_antf6")]
 position = Vector2(8556, -522)
 scale = Vector2(1, 2)
 scene_name = "WinScreen"
 
-[node name="FamiliarLookingRocket" type="Sprite2D" parent="WinCondition"]
+[node name="FamiliarLookingRocket" type="Sprite2D" parent="RocketGoal"]
 z_index = -1
 position = Vector2(0, -11)
 scale = Vector2(0.4, 0.2)
 texture = ExtResource("5_g0tbl")
+
+[node name="DeathPlane" parent="." instance=ExtResource("4_antf6")]
+position = Vector2(4323, 673)
+scale = Vector2(137, 1)
+scene_name = "Level2"

@@ -11,10 +11,10 @@ extends Node2D
 func _ready():
 	if !view_guide:
 		spawn_guide.visible = false
-		
+
 	if start_offset:
 		await get_tree().create_timer(start_offset).timeout
-		
+	
 	repeat()
 
 
