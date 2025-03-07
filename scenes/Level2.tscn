@@ -156,3 +156,45 @@ texture = ExtResource("5_g0tbl")
 position = Vector2(4323, 673)
 scale = Vector2(137, 1)
 scene_name = "Level2"
+
+[node name="HelpText" type="Node" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HelpText"]
+offset_left = 415.0
+offset_top = 112.0
+offset_right = 664.0
+offset_bottom = 152.0
+bbcode_enabled = true
+text = "[font=res://assets/fonts/Rodin-Pro-DB.otf]Time for a change of scenery, don't you think?"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="HelpText"]
+offset_left = 1412.0
+offset_top = -42.0
+offset_right = 1762.0
+offset_bottom = -2.0
+bbcode_enabled = true
+text = "[font=res://assets/fonts/Rodin-Pro-DB.otf]Rolling saws! Wait for the right opportunity to go through."
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="HelpText"]
+offset_left = 5782.0
+offset_top = -289.0
+offset_right = 6161.0
+offset_bottom = -249.0
+bbcode_enabled = true
+text = "[font=res://assets/fonts/Rodin-Pro-DB.otf]Time your movement inbetween the saws."
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="HelpText"]
+offset_left = 7275.0
+offset_top = 164.0
+offset_right = 7416.0
+offset_bottom = 204.0
+bbcode_enabled = true
+text = "[font=res://assets/fonts/Rodin-Pro-DB.otf]One final climb..."
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="HelpText"]
+offset_left = 8228.0
+offset_top = -615.0
+offset_right = 8381.0
+offset_bottom = -575.0
+bbcode_enabled = true
+text = "[font=res://assets/fonts/Rodin-Pro-DB.otf]Congratulations!!!"
