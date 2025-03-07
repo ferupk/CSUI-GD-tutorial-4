@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bc2fujtl13g10"]
 
-[ext_resource type="Script" path="res://scenes/player.gd" id="1_xsgpf"]
+[ext_resource type="Script" path="res://scenes/player/Player.gd" id="1_xsgpf"]
 [ext_resource type="Texture2D" uid="uid://dhsqj8dybb7fq" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_alien.png" id="2"]
 [ext_resource type="Script" path="res://scenes/player/PlayerCamera.gd" id="3_u8esg"]
 
