@@ -89,8 +89,8 @@ tile_map_data = PackedByteArray("AAAAAP7/AAAHAAEAAAAAAP//AAABAAAAAAAAAAAAAAABAAA
 tile_set = SubResource("TileSet_towcv")
 
 [node name="LoseCondition" parent="." instance=ExtResource("3_fttfb")]
-position = Vector2(2048, 672)
-scale = Vector2(64, 1)
+position = Vector2(4706, 672)
+scale = Vector2(149, 1)
 
 [node name="WinCondition" parent="." instance=ExtResource("3_fttfb")]
 position = Vector2(8416, -10)
