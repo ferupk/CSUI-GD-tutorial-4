@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://yqmk0vpvnyxr"]
+[gd_scene load_steps=11 format=4 uid="uid://yqmk0vpvnyxr"]
 
 [ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/player/Player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://cluh2ekc38ktx" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_dirt.png" id="2_la3nk"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c2elrwhkhqssr" path="res://assets/spritesheet_gr_dirt_ALT.png" id="3_p5ewe"]
 [ext_resource type="Texture2D" uid="uid://chgqimvh7rdh6" path="res://assets/Familiar Looking Rocket.png" id="4_3hmll"]
 [ext_resource type="PackedScene" uid="uid://b8ht7fx7phrhf" path="res://scenes/spawners/FishSpawner.tscn" id="6_m1pnx"]
+[ext_resource type="PackedScene" uid="uid://bdgufxoe5wk41" path="res://scenes/LifeCounter.tscn" id="7_ung30"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bp4ro"]
 texture = ExtResource("2_la3nk")
@@ -154,3 +155,7 @@ offset_right = 8240.0
 offset_bottom = -32.0
 bbcode_enabled = true
 text = "[font=res://assets/fonts/Rodin-Pro-DB.otf]You did it! Enter the rocket to go to the next level."
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LifeCounter" parent="CanvasLayer" instance=ExtResource("7_ung30")]

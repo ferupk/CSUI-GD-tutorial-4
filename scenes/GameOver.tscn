@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwgbjwqknsi76"]
+
+[ext_resource type="FontFile" uid="uid://g0e4g4332ft0" path="res://assets/fonts/CC Wild Words Roman.ttf" id="1_kj6kf"]
+
+[node name="GameOver" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0.0941176, 0.458824)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 314.0
+offset_top = 243.0
+offset_right = 961.0
+offset_bottom = 337.0
+theme_override_fonts/font = ExtResource("1_kj6kf")
+theme_override_font_sizes/font_size = 108
+text = "Game Over"
