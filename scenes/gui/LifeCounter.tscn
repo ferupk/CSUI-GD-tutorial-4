@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bdgufxoe5wk41"]
 
-[ext_resource type="Script" path="res://scenes/LifeCounter.gd" id="1_mcbr2"]
+[ext_resource type="Script" path="res://scenes/scripts/LifeCounter.gd" id="1_mcbr2"]
 
 [node name="LifeCounter" type="MarginContainer"]
 

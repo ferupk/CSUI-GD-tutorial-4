@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://gkduwvg8q6ie"]
 
-[ext_resource type="Texture2D" uid="uid://d0xi3jghkp5hk" path="res://assets/Keanu.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://d0xi3jghkp5hk" path="res://assets/Keanu.png" id="1_8mb7b"]
 
 [node name="WinScreen" type="Sprite2D"]
 position = Vector2(639, 358.75)
 scale = Vector2(1.25, 1.25482)
-texture = ExtResource("1")
+texture = ExtResource("1_8mb7b")

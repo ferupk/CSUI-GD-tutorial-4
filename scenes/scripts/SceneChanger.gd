@@ -8,9 +8,7 @@ func _on_SceneChanger_body_entered(body):
 	if body.get_name() == "Player":
 		if current_scene == scene_name:
 			Global.lives -= 1
-		if self.get_name() == "RocketGoal" and scene_name.begins_with("Level"):
-			Global.current_level = scene_name
 		if Global.lives == 0:
-			get_tree().change_scene_to_file("res://scenes/Game Over.tscn")
+			get_tree().change_scene_to_file("res://scenes/GameOver.tscn")
 		else:
 			get_tree().change_scene_to_file("res://scenes/" + scene_name + ".tscn")

@@ -1,15 +1,15 @@
 [gd_scene load_steps=11 format=4 uid="uid://yqmk0vpvnyxr"]
 
-[ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/player/Player.tscn" id="1"]
-[ext_resource type="Texture2D" uid="uid://cluh2ekc38ktx" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_dirt.png" id="2_la3nk"]
-[ext_resource type="PackedScene" uid="uid://b1mt0bxm8wg2b" path="res://scenes/utils/SceneChanger.tscn" id="3_fttfb"]
-[ext_resource type="Texture2D" uid="uid://c2elrwhkhqssr" path="res://assets/spritesheet_gr_dirt_ALT.png" id="3_p5ewe"]
-[ext_resource type="Texture2D" uid="uid://chgqimvh7rdh6" path="res://assets/Familiar Looking Rocket.png" id="4_3hmll"]
-[ext_resource type="PackedScene" uid="uid://b8ht7fx7phrhf" path="res://scenes/spawners/FishSpawner.tscn" id="6_m1pnx"]
-[ext_resource type="PackedScene" uid="uid://bdgufxoe5wk41" path="res://scenes/LifeCounter.tscn" id="7_ung30"]
+[ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/objects/Player.tscn" id="1_ws381"]
+[ext_resource type="Texture2D" uid="uid://cluh2ekc38ktx" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_dirt.png" id="2_50ub5"]
+[ext_resource type="Texture2D" uid="uid://c2elrwhkhqssr" path="res://assets/spritesheet_gr_dirt_ALT.png" id="3_dq74p"]
+[ext_resource type="PackedScene" uid="uid://b8ht7fx7phrhf" path="res://scenes/objects/FishSpawner.tscn" id="4_kpy6k"]
+[ext_resource type="PackedScene" uid="uid://b1mt0bxm8wg2b" path="res://scenes/utils/SceneChanger.tscn" id="5_wt240"]
+[ext_resource type="Texture2D" uid="uid://chgqimvh7rdh6" path="res://assets/Familiar Looking Rocket.png" id="6_72mcq"]
+[ext_resource type="PackedScene" uid="uid://bdgufxoe5wk41" path="res://scenes/gui/LifeCounter.tscn" id="7_7fidl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bp4ro"]
-texture = ExtResource("2_la3nk")
+texture = ExtResource("2_50ub5")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
@@ -50,7 +50,7 @@ texture_region_size = Vector2i(128, 128)
 8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ehfq3"]
-texture = ExtResource("3_p5ewe")
+texture = ExtResource("3_dq74p")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64)
@@ -78,7 +78,7 @@ sources/1 = SubResource("TileSetAtlasSource_ehfq3")
 
 [node name="Level1" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1")]
+[node name="Player" parent="." instance=ExtResource("1_ws381")]
 position = Vector2(320, 281)
 collision_layer = 3
 collision_mask = 3
@@ -91,15 +91,15 @@ tile_set = SubResource("TileSet_towcv")
 
 [node name="Spawners" type="Node" parent="."]
 
-[node name="FishSpawner" parent="Spawners" instance=ExtResource("6_m1pnx")]
+[node name="FishSpawner" parent="Spawners" instance=ExtResource("4_kpy6k")]
 position = Vector2(2497, -394)
 spawn_range = 640
 
-[node name="FishSpawner2" parent="Spawners" instance=ExtResource("6_m1pnx")]
+[node name="FishSpawner2" parent="Spawners" instance=ExtResource("4_kpy6k")]
 position = Vector2(7101, -467)
 spawn_range = 704
 
-[node name="RocketGoal" parent="." instance=ExtResource("3_fttfb")]
+[node name="RocketGoal" parent="." instance=ExtResource("5_wt240")]
 position = Vector2(8416, -10)
 scale = Vector2(1, 2)
 scene_name = "Level2"
@@ -108,9 +108,9 @@ scene_name = "Level2"
 z_index = -1
 position = Vector2(0, -11)
 scale = Vector2(0.4, 0.2)
-texture = ExtResource("4_3hmll")
+texture = ExtResource("6_72mcq")
 
-[node name="DeathPlane" parent="." instance=ExtResource("3_fttfb")]
+[node name="DeathPlane" parent="." instance=ExtResource("5_wt240")]
 position = Vector2(4706, 672)
 scale = Vector2(149, 1)
 
@@ -158,4 +158,4 @@ text = "[font=res://assets/fonts/Rodin-Pro-DB.otf]You did it! Enter the rocket t
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="LifeCounter" parent="CanvasLayer" instance=ExtResource("7_ung30")]
+[node name="LifeCounter" parent="CanvasLayer" instance=ExtResource("7_7fidl")]
