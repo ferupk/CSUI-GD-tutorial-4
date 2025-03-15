@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvfpipq1x3utt"]
+[gd_scene load_steps=6 format=3 uid="uid://dvfpipq1x3utt"]
 
 [ext_resource type="FontFile" uid="uid://g0e4g4332ft0" path="res://assets/fonts/CC Wild Words Roman.ttf" id="1_5bd0t"]
 [ext_resource type="FontFile" uid="uid://cth60gqdxo73p" path="res://assets/fonts/continuum bold.ttf" id="2_allxg"]
+[ext_resource type="Script" path="res://scenes/SceneButton.gd" id="3_n47w1"]
 [ext_resource type="Texture2D" uid="uid://dhsqj8dybb7fq" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_alien.png" id="3_yfq11"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g7qyu"]
@@ -46,6 +47,8 @@ theme_override_font_sizes/font_size = 48
 text = "New Game"
 underline = 2
 text_direction = 1
+script = ExtResource("3_n47w1")
+scene_to_load = "Level1"
 
 [node name="LinkButton2" type="LinkButton" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -63,3 +66,5 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_g7qyu")
 stretch_mode = 4
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/LinkButton" to="HBoxContainer/VBoxContainer/VBoxContainer/LinkButton" method="_on_button_pressed"]
