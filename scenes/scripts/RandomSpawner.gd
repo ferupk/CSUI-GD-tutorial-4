@@ -27,7 +27,7 @@ func _process(_delta: float) -> void:
 
 func spawn():
 	var spawned = obstacle.instantiate()
-	get_parent().add_child(spawned)
+	get_parent().call_deferred("add_child", spawned)
 
 	var spawn_pos = global_position
 	spawn_pos.x = spawn_pos.x + randf_range(-spawn_range, spawn_range)

@@ -9,6 +9,6 @@ func _on_SceneChanger_body_entered(body):
 		if current_scene == scene_name:
 			Global.lives -= 1
 		if Global.lives == 0:
-			get_tree().change_scene_to_file("res://scenes/GameOver.tscn")
+			get_tree().call_deferred("change_scene_to_file", "res://scenes/GameOver.tscn")
 		else:
-			get_tree().change_scene_to_file("res://scenes/" + scene_name + ".tscn")
+			get_tree().call_deferred("change_scene_to_file", "res://scenes/" + scene_name + ".tscn")
