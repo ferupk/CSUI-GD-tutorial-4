@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdgufxoe5wk41"]
+[gd_scene load_steps=3 format=3 uid="uid://bdgufxoe5wk41"]
 
+[ext_resource type="FontFile" uid="uid://g0e4g4332ft0" path="res://assets/fonts/CC Wild Words Roman.ttf" id="1_0irhl"]
 [ext_resource type="Script" path="res://scenes/scripts/LifeCounter.gd" id="1_mcbr2"]
 
 [node name="LifeCounter" type="MarginContainer"]
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0irhl")
+theme_override_font_sizes/font_size = 32
 script = ExtResource("1_mcbr2")

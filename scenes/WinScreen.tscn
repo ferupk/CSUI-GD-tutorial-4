@@ -1,8 +1,50 @@
-[gd_scene load_steps=2 format=3 uid="uid://gkduwvg8q6ie"]
+[gd_scene load_steps=5 format=3 uid="uid://gkduwvg8q6ie"]
 
 [ext_resource type="Texture2D" uid="uid://d0xi3jghkp5hk" path="res://assets/Keanu.png" id="1_8mb7b"]
+[ext_resource type="FontFile" uid="uid://g0e4g4332ft0" path="res://assets/fonts/CC Wild Words Roman.ttf" id="2_5sfco"]
+[ext_resource type="FontFile" uid="uid://cth60gqdxo73p" path="res://assets/fonts/continuum bold.ttf" id="3_at827"]
+[ext_resource type="Script" path="res://scenes/scripts/SceneButton.gd" id="4_fcfqh"]
 
-[node name="WinScreen" type="Sprite2D"]
-position = Vector2(639, 358.75)
-scale = Vector2(1.25, 1.25482)
+[node name="WinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.336198, 0.424042, 0.226114, 1)
+offset_right = 1280.0
+offset_bottom = 720.0
 texture = ExtResource("1_8mb7b")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_5sfco")
+theme_override_font_sizes/font_size = 108
+text = "You win!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.668806, 0.768359, 0.819765, 1)
+theme_override_fonts/font = ExtResource("3_at827")
+theme_override_font_sizes/font_size = 36
+text = "Back to Main Menu"
+underline = 2
+script = ExtResource("4_fcfqh")
+scene_to_load = "MainMenu"
+
+[connection signal="pressed" from="VBoxContainer/LinkButton" to="VBoxContainer/LinkButton" method="_on_pressed"]

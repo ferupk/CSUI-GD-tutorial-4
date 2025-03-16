@@ -1,21 +1,52 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwgbjwqknsi76"]
+[gd_scene load_steps=5 format=3 uid="uid://cwgbjwqknsi76"]
 
 [ext_resource type="FontFile" uid="uid://g0e4g4332ft0" path="res://assets/fonts/CC Wild Words Roman.ttf" id="1_1mupm"]
+[ext_resource type="Texture2D" uid="uid://bi5p7hlw4wlhv" path="res://assets/dead.jpg" id="1_g8amc"]
+[ext_resource type="FontFile" uid="uid://cth60gqdxo73p" path="res://assets/fonts/continuum bold.ttf" id="3_lkjdw"]
+[ext_resource type="Script" path="res://scenes/scripts/SceneButton.gd" id="4_vtnhv"]
 
-[node name="GameOver" type="ColorRect"]
+[node name="GameOver" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0, 0.0941176, 0.458824)
 
-[node name="Label" type="Label" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.356863, 0, 0.141176, 1)
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("1_g8amc")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-offset_left = 314.0
-offset_top = 243.0
-offset_right = 961.0
-offset_bottom = 337.0
+size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_1mupm")
 theme_override_font_sizes/font_size = 108
-text = "Game Over"
+text = "game over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.668806, 0.768359, 0.819765, 1)
+theme_override_fonts/font = ExtResource("3_lkjdw")
+theme_override_font_sizes/font_size = 36
+text = "Back to Main Menu"
+underline = 2
+script = ExtResource("4_vtnhv")
+scene_to_load = "MainMenu"
+
+[connection signal="pressed" from="VBoxContainer/LinkButton" to="VBoxContainer/LinkButton" method="_on_pressed"]

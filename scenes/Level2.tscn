@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://blcfbk7gt6ut4"]
+[gd_scene load_steps=9 format=4 uid="uid://blcfbk7gt6ut4"]
 
 [ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/objects/Player.tscn" id="1_25qal"]
 [ext_resource type="Texture2D" uid="uid://ce3cnsg6oo47k" path="res://assets/Thanshuny-Wolf Platformer Tilemap.png" id="2_nuwn7"]
 [ext_resource type="PackedScene" uid="uid://cwwi0q43m4y78" path="res://scenes/objects/SawSpawner.tscn" id="3_4qsy5"]
 [ext_resource type="PackedScene" uid="uid://b1mt0bxm8wg2b" path="res://scenes/utils/SceneChanger.tscn" id="4_antf6"]
 [ext_resource type="Texture2D" uid="uid://chgqimvh7rdh6" path="res://assets/Familiar Looking Rocket.png" id="5_g0tbl"]
+[ext_resource type="PackedScene" uid="uid://bdgufxoe5wk41" path="res://scenes/gui/LifeCounter.tscn" id="6_8ap16"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1r6ia"]
 texture = ExtResource("2_nuwn7")
@@ -157,7 +158,7 @@ position = Vector2(4323, 673)
 scale = Vector2(137, 1)
 scene_name = "Level2"
 
-[node name="HelpText" type="Node" parent="."]
+[node name="HelpText" type="Node2D" parent="."]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HelpText"]
 offset_left = 415.0
@@ -198,3 +199,7 @@ offset_right = 8381.0
 offset_bottom = -575.0
 bbcode_enabled = true
 text = "[font=res://assets/fonts/Rodin-Pro-DB.otf]Congratulations!!!"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LifeCounter" parent="CanvasLayer" instance=ExtResource("6_8ap16")]
