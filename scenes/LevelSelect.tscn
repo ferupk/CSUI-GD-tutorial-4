@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2dgrbld4nmea"]
+
+[ext_resource type="FontFile" uid="uid://g0e4g4332ft0" path="res://assets/fonts/CC Wild Words Roman.ttf" id="1_hcixs"]
+[ext_resource type="FontFile" uid="uid://cth60gqdxo73p" path="res://assets/fonts/continuum bold.ttf" id="2_w5sil"]
+[ext_resource type="Script" path="res://scenes/scripts/SceneButton.gd" id="3_k053y"]
+
+[node name="LevelSelect" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_hcixs")
+theme_override_font_sizes/font_size = 108
+text = "Level Select"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.980507, 0.876845, 2.31028e-06, 1)
+theme_override_fonts/font = ExtResource("2_w5sil")
+theme_override_font_sizes/font_size = 72
+text = "1"
+underline = 2
+script = ExtResource("3_k053y")
+scene_to_load = "Level1"
+
+[node name="LinkButton2" type="LinkButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.980507, 0.876845, 2.31028e-06, 1)
+theme_override_fonts/font = ExtResource("2_w5sil")
+theme_override_font_sizes/font_size = 72
+text = "2"
+underline = 2
+script = ExtResource("3_k053y")
+scene_to_load = "Level2"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LinkButton" to="VBoxContainer/HBoxContainer/LinkButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LinkButton2" to="VBoxContainer/HBoxContainer/LinkButton2" method="_on_pressed"]

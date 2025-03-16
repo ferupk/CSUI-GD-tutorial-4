@@ -51,17 +51,19 @@ text_direction = 1
 script = ExtResource("3_n47w1")
 scene_to_load = "Level1"
 
-[node name="StartGame" type="Node2D" parent="HBoxContainer/VBoxContainer/VBoxContainer/LinkButton"]
-script = ExtResource("4_yyp2x")
-
-[node name="StageSelect" type="LinkButton" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="LinkButton2" type="LinkButton" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.437802, 0.616362, 1, 1)
 theme_override_fonts/font = ExtResource("2_allxg")
 theme_override_font_sizes/font_size = 42
-text = "Stage Select"
+text = "Level Select"
 underline = 2
+script = ExtResource("3_n47w1")
+scene_to_load = "LevelSelect"
+
+[node name="StartGame" type="Node2D" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+script = ExtResource("4_yyp2x")
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(256, 320)
@@ -72,4 +74,6 @@ texture = SubResource("AtlasTexture_g7qyu")
 stretch_mode = 4
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/LinkButton" to="HBoxContainer/VBoxContainer/VBoxContainer/LinkButton" method="_on_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/LinkButton" to="HBoxContainer/VBoxContainer/VBoxContainer/LinkButton/StartGame" method="_start_game"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/LinkButton" to="HBoxContainer/VBoxContainer/VBoxContainer/StartGame" method="_start_game"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/LinkButton2" to="HBoxContainer/VBoxContainer/VBoxContainer/StartGame" method="_start_game"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/LinkButton2" to="HBoxContainer/VBoxContainer/VBoxContainer/LinkButton2" method="_on_pressed"]

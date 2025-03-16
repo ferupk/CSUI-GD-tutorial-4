@@ -1,6 +1,6 @@
 extends Control
 
-@export var scene_to_load: String
+@export var scene_to_load: String = "MainMenu"
 
 
 func _on_pressed():
