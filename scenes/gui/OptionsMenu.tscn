@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bynkxh5bmkgfa"]
 
 [ext_resource type="FontFile" uid="uid://g0e4g4332ft0" path="res://assets/fonts/CC Wild Words Roman.ttf" id="1_15mj0"]
-[ext_resource type="Script" path="res://scenes/gui/OptionsMenu.gd" id="1_olve7"]
+[ext_resource type="Script" path="res://scenes/scripts/PopupMenu.gd" id="1_olve7"]
 [ext_resource type="FontFile" uid="uid://cth60gqdxo73p" path="res://assets/fonts/continuum bold.ttf" id="2_6cnd4"]
 [ext_resource type="PackedScene" uid="uid://chxbgcqp1lme3" path="res://scenes/gui/VolumeSlider.tscn" id="3_k2etr"]
 
