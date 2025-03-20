@@ -1,0 +1,105 @@
+[gd_scene load_steps=9 format=3 uid="uid://cay0sj4kxopnx"]
+
+[ext_resource type="Texture2D" uid="uid://chgqimvh7rdh6" path="res://assets/Familiar Looking Rocket.png" id="1_2hwsq"]
+[ext_resource type="Script" path="res://scenes/scripts/Goal.gd" id="1_ry8cb"]
+[ext_resource type="Texture2D" uid="uid://bojo6xld4glt6" path="res://assets/Rocket Fire.png" id="3_3vlb2"]
+[ext_resource type="PackedScene" uid="uid://dhqh0lr0ybi1b" path="res://scenes/gui/ClearMenu.tscn" id="3_3382u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5bgw"]
+size = Vector2(64, 128)
+
+[sub_resource type="Animation" id="Animation_mp8yw"]
+resource_name = "Fly"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GoalSprites:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 2),
+"transitions": PackedFloat32Array(-0.5, 1.31951, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -48), Vector2(0, -960)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GoalSprites/RocketFire:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_bvfbx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GoalSprites:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GoalSprites/RocketFire:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_brqoh"]
+_data = {
+"Fly": SubResource("Animation_mp8yw"),
+"RESET": SubResource("Animation_bvfbx")
+}
+
+[node name="Goal" type="Area2D"]
+script = ExtResource("1_ry8cb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 21)
+shape = SubResource("RectangleShape2D_p5bgw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_brqoh")
+}
+
+[node name="GoalSprites" type="Node2D" parent="."]
+scale = Vector2(0.4, 0.4)
+
+[node name="FamiliarLookingRocket" type="Sprite2D" parent="GoalSprites"]
+z_index = -1
+texture = ExtResource("1_2hwsq")
+
+[node name="RocketFire" type="Sprite2D" parent="GoalSprites"]
+visible = false
+z_index = -1
+position = Vector2(0, 254)
+texture = ExtResource("3_3vlb2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ClearMenu" parent="CanvasLayer" instance=ExtResource("3_3382u")]
+offset_left = -360.0
+offset_top = -240.0
+offset_right = 360.0
+offset_bottom = 240.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

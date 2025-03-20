@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhqh0lr0ybi1b"]
+
+[ext_resource type="FontFile" uid="uid://g0e4g4332ft0" path="res://assets/fonts/CC Wild Words Roman.ttf" id="1_1ofof"]
+[ext_resource type="Script" path="res://scenes/scripts/ClearMenu.gd" id="1_hwa4k"]
+[ext_resource type="FontFile" uid="uid://cth60gqdxo73p" path="res://assets/fonts/continuum bold.ttf" id="2_7ubg4"]
+
+[node name="ClearMenu" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hwa4k")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(720, 480)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0.567826, 0.295048, 0.081781, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_1ofof")
+theme_override_font_sizes/font_size = 72
+text = "Level Cleared!"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Continue" type="LinkButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0.843137, 0, 1)
+theme_override_fonts/font = ExtResource("2_7ubg4")
+theme_override_font_sizes/font_size = 36
+text = "Next Level"
+underline = 2
+
+[node name="Quit" type="LinkButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.439216, 0.615686, 1, 1)
+theme_override_fonts/font = ExtResource("2_7ubg4")
+theme_override_font_sizes/font_size = 36
+text = "Quit Game"
+underline = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

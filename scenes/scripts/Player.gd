@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var speed: int = 400
 @export var gravity: int = 1200
 @export var jump_speed: int = -400
+@export var in_control: bool = true
 
 
 func get_input():
@@ -15,9 +16,19 @@ func get_input():
 		velocity.x -= speed
 
 
+func enable_controls():
+	in_control = true
+
+
+func disable_controls():
+	in_control = false
+	velocity = Vector2(0, 0)
+
+
 func _physics_process(delta):
 	velocity.y += delta * gravity
-	get_input()
+	if in_control:
+		get_input()
 	move_and_slide()
 
 

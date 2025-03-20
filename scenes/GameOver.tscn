@@ -47,6 +47,5 @@ theme_override_font_sizes/font_size = 36
 text = "Back to Main Menu"
 underline = 2
 script = ExtResource("4_vtnhv")
-scene_to_load = "MainMenu"
 
 [connection signal="pressed" from="VBoxContainer/LinkButton" to="VBoxContainer/LinkButton" method="_on_pressed"]
