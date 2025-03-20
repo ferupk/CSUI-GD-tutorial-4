@@ -1,0 +1,114 @@
+[gd_scene load_steps=5 format=3 uid="uid://bynkxh5bmkgfa"]
+
+[ext_resource type="FontFile" uid="uid://g0e4g4332ft0" path="res://assets/fonts/CC Wild Words Roman.ttf" id="1_15mj0"]
+[ext_resource type="Script" path="res://scenes/gui/OptionsMenu.gd" id="1_olve7"]
+[ext_resource type="FontFile" uid="uid://cth60gqdxo73p" path="res://assets/fonts/continuum bold.ttf" id="2_6cnd4"]
+[ext_resource type="PackedScene" uid="uid://chxbgcqp1lme3" path="res://scenes/gui/VolumeSlider.tscn" id="3_k2etr"]
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_olve7")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(720, 480)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer/MarginContainer"]
+layout_mode = 2
+color = Color(0.567826, 0.295048, 0.081781, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_15mj0")
+theme_override_font_sizes/font_size = 72
+text = "options"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 96
+theme_override_constants/margin_right = 96
+
+[node name="VolumeOptions" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="MasterVolume" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/MarginContainer/VolumeOptions"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/MarginContainer/VolumeOptions/MasterVolume"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_6cnd4")
+theme_override_font_sizes/font_size = 36
+text = "Master Volume"
+horizontal_alignment = 1
+
+[node name="VolumeSlider" parent="CenterContainer/MarginContainer/VBoxContainer/MarginContainer/VolumeOptions/MasterVolume" instance=ExtResource("3_k2etr")]
+layout_mode = 2
+bus = "Master"
+
+[node name="MusicVolume" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/MarginContainer/VolumeOptions"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/MarginContainer/VolumeOptions/MusicVolume"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_6cnd4")
+theme_override_font_sizes/font_size = 36
+text = "Music Volume"
+horizontal_alignment = 1
+
+[node name="VolumeSlider" parent="CenterContainer/MarginContainer/VBoxContainer/MarginContainer/VolumeOptions/MusicVolume" instance=ExtResource("3_k2etr")]
+layout_mode = 2
+bus = "BGM"
+
+[node name="SFXVolume" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/MarginContainer/VolumeOptions"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/MarginContainer/VolumeOptions/SFXVolume"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_6cnd4")
+theme_override_font_sizes/font_size = 36
+text = "SFX Volume"
+horizontal_alignment = 1
+
+[node name="VolumeSlider" parent="CenterContainer/MarginContainer/VBoxContainer/MarginContainer/VolumeOptions/SFXVolume" instance=ExtResource("3_k2etr")]
+layout_mode = 2
+bus = "SFX"
+
+[node name="ExitMenu" type="LinkButton" parent="."]
+layout_mode = 0
+offset_left = 301.0
+offset_top = 134.0
+offset_right = 323.0
+offset_bottom = 172.0
+theme_override_fonts/font = ExtResource("2_6cnd4")
+theme_override_font_sizes/font_size = 36
+text = "X"
+underline = 2
+
+[connection signal="pressed" from="ExitMenu" to="." method="_close_menu"]

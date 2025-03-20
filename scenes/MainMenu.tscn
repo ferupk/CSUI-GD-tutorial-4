@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvfpipq1x3utt"]
+[gd_scene load_steps=8 format=3 uid="uid://dvfpipq1x3utt"]
 
 [ext_resource type="FontFile" uid="uid://g0e4g4332ft0" path="res://assets/fonts/CC Wild Words Roman.ttf" id="1_5bd0t"]
 [ext_resource type="FontFile" uid="uid://cth60gqdxo73p" path="res://assets/fonts/continuum bold.ttf" id="2_allxg"]
 [ext_resource type="Script" path="res://scenes/scripts/SceneButton.gd" id="3_n47w1"]
 [ext_resource type="Texture2D" uid="uid://dhsqj8dybb7fq" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_alien.png" id="3_yfq11"]
 [ext_resource type="Script" path="res://scenes/scripts/StartGame.gd" id="4_yyp2x"]
+[ext_resource type="PackedScene" uid="uid://bynkxh5bmkgfa" path="res://scenes/gui/OptionsMenu.tscn" id="6_j0kcp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g7qyu"]
 atlas = ExtResource("3_yfq11")
@@ -65,6 +66,25 @@ scene_to_load = "LevelSelect"
 [node name="StartGame" type="Node2D" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
 script = ExtResource("4_yyp2x")
 
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 24
+
+[node name="LinkButton" type="LinkButton" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_allxg")
+theme_override_font_sizes/font_size = 24
+text = "Options"
+underline = 2
+
+[node name="LinkButton2" type="LinkButton" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_allxg")
+theme_override_font_sizes/font_size = 24
+text = "Credits"
+underline = 2
+
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(256, 320)
 layout_mode = 2
@@ -73,6 +93,12 @@ size_flags_vertical = 4
 texture = SubResource("AtlasTexture_g7qyu")
 stretch_mode = 4
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="OptionsMenu" parent="CanvasLayer" instance=ExtResource("6_j0kcp")]
+visible = false
+
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/LinkButton" to="HBoxContainer/VBoxContainer/VBoxContainer/LinkButton" method="_on_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/LinkButton" to="HBoxContainer/VBoxContainer/VBoxContainer/StartGame" method="_start_game"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/LinkButton2" to="HBoxContainer/VBoxContainer/VBoxContainer/LinkButton2" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer/LinkButton" to="CanvasLayer/OptionsMenu" method="_open_menu"]

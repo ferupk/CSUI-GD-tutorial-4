@@ -122,6 +122,7 @@ texture = ExtResource("3_3vlb2")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ClearMenu" parent="CanvasLayer" instance=ExtResource("3_3382u")]
+visible = false
 offset_left = -360.0
 offset_top = -240.0
 offset_right = 360.0
