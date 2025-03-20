@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2dgrbld4nmea"]
+[gd_scene load_steps=5 format=3 uid="uid://c2dgrbld4nmea"]
 
 [ext_resource type="FontFile" uid="uid://g0e4g4332ft0" path="res://assets/fonts/CC Wild Words Roman.ttf" id="1_hcixs"]
 [ext_resource type="FontFile" uid="uid://cth60gqdxo73p" path="res://assets/fonts/continuum bold.ttf" id="2_w5sil"]
 [ext_resource type="Script" path="res://scenes/scripts/SceneButton.gd" id="3_k053y"]
+[ext_resource type="Script" path="res://scenes/scripts/StartGame.gd" id="4_kn8yx"]
 
 [node name="LevelSelect" type="MarginContainer"]
 anchors_preset = 15
@@ -49,5 +50,10 @@ underline = 2
 script = ExtResource("3_k053y")
 scene_to_load = "Level2"
 
+[node name="StartGame" type="Node2D" parent="VBoxContainer/HBoxContainer"]
+script = ExtResource("4_kn8yx")
+
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/LinkButton" to="VBoxContainer/HBoxContainer/LinkButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LinkButton" to="VBoxContainer/HBoxContainer/StartGame" method="_start_game"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/LinkButton2" to="VBoxContainer/HBoxContainer/LinkButton2" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LinkButton2" to="VBoxContainer/HBoxContainer/StartGame" method="_start_game"]

@@ -18,6 +18,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Global="*res://Global.gd"
+BGMController="*res://scenes/utils/BGMController.tscn"
 
 [display]
 

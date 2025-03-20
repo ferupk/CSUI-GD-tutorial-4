@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bc2fujtl13g10"]
+[gd_scene load_steps=11 format=3 uid="uid://bc2fujtl13g10"]
 
 [ext_resource type="Script" path="res://scenes/scripts/Player.gd" id="1_xsgpf"]
 [ext_resource type="Texture2D" uid="uid://dhsqj8dybb7fq" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_alien.png" id="2"]
 [ext_resource type="Script" path="res://scenes/scripts/PlayerCamera.gd" id="3_u8esg"]
+[ext_resource type="AudioStream" uid="uid://bdvcq7vat85eg" path="res://assets/sfx/playerjump.wav" id="4_jbe1v"]
+[ext_resource type="AudioStream" uid="uid://b8v6kcksy5f11" path="res://assets/sfx/playerdie.ogg" id="5_im3jv"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(52.924, 76.884)
@@ -95,3 +97,15 @@ drag_bottom_margin = 0.0
 editor_draw_limits = true
 editor_draw_drag_margin = true
 script = ExtResource("3_u8esg")
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Jump" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_jbe1v")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="Die" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("5_im3jv")
+volume_db = -5.0
+bus = &"SFX"
