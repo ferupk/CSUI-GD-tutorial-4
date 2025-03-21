@@ -172,6 +172,7 @@ theme_override_font_sizes/font_size = 36
 text = "Continue"
 underline = 2
 script = ExtResource("8_honin")
+scene_to_load = "Level1"
 
 [node name="Quit" type="LinkButton" parent="CanvasLayer/ClearMenu/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://7o0p7kio28hi"]
+[gd_scene load_steps=6 format=3 uid="uid://dyadma6ytv4a4"]
 
 [ext_resource type="FontFile" uid="uid://g0e4g4332ft0" path="res://assets/fonts/CC Wild Words Roman.ttf" id="1_1ofof"]
 [ext_resource type="FontFile" uid="uid://cth60gqdxo73p" path="res://assets/fonts/continuum bold.ttf" id="2_7ubg4"]
@@ -17,8 +17,6 @@ func _ready() -> void:
 	self.hide()
 	print(\"CM\" + scene)
 	continue_button.scene_to_load = scene
-
-func set_scene()
 "
 
 [node name="ClearMenu" type="CenterContainer"]
@@ -28,7 +26,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_ja72a")
-scene = null
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(720, 480)

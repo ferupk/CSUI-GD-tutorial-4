@@ -1,14 +1,14 @@
 [ Music ]
-"Call to Adventure" by Kevin MacLeod
-"Heartbreaking" by Kevin MacLeod
-"Who Likes to Party" by Kevin MacLeod
-"Local Forecast - Elevator" by Kevin MacLeod
+"Call to Adventure" by Kevin MacLeod - Incompetech
+"Heartbreaking" by Kevin MacLeod - Incompetech
+"Who Likes to Party" by Kevin MacLeod - Incompetech
+"Local Forecast - Elevator" by Kevin MacLeod - Incompetech
 
 [ SFX ]
-"Retro video game sfx - Explode" by OwlStorm
-"male_hurt8.ogg" by micahlg
-"jump boing" by 1bob
+"Retro video game sfx - Explode" by OwlStorm - freesound.org
+"male_hurt8.ogg" by micahlg - Freesound.org
+"jump boing" by 1bob - Freesound.org
 
 [ Art ]
-"Platformer Pack Redux" by Kenney Assets
-"Platformer Tileset" by Thanshuny Wolf
+"Platformer Pack Redux" by Kenney Assets - Kenney.nl
+"Platformer Tileset" by Thanshuny Wolf - itch.io

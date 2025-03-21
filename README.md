@@ -290,3 +290,282 @@ func _ready() -> void:
 - Godot 3.2 Let's Build a 2D Platformer!: Part 6 (Camera-Follow & Game Resolution) by BornCG: https://youtu.be/z--IEsXl5zc
 - How to Improve Your Camera for Platformers in Godot 3.1 by Game Endeavor: https://youtu.be/sxtC7hj2ABY
 - Godot 4 Global Variables by Gwizz: https://youtu.be/sc-tEPdLZhk
+
+---
+
+# Game Development - Tutorial 6
+
+- **Name:** Feru Pratama Kartajaya
+- **NPM:** 2106750351
+- **Topic:** Menu and In-Game Graphical User Interface
+
+---
+
+## Latihan Mandiri: Fitur Tambahan
+
+### A. System
+Terdapat beberapa perubahan sistem yang telah diterapkan selama tutorial ini.
+#### Lives and Death
+Sebelumnya, pemain dapat mati berulang kali dalam sebuah level dan masih dapat melanjutlan game. Sekarang, pemain diberikan 3 lives yang akan berkurang apabila pemain mati. Pemain dapat kehilangan life dengan jatuh ke jurang atau menyentuh rintangan Fish dan Saw. Setelah mati, game akan menunggu sejenak sebelum melakukan reload scene.
+
+```py
+# Global.gd
+extends Node
+
+var lives = 3
+```
+
+```py
+# DeathArea.gd
+extends Area2D
+
+
+func _on_body_entered(body):
+	if body.get_name() == "Player":
+		# Kill
+		Global.lives -= 1
+		body.kill()
+		await get_tree().create_timer(1.5).timeout
+
+		# Load appropriate scene
+		if Global.lives > 0:
+			get_tree().call_deferred("reload_current_scene")
+		else:
+			get_tree().call_deferred("change_scene_to_file", "res://scenes/GameOver.tscn")
+```
+```py
+# Player.gd
+@export var in_control: bool = true
+
+func enable_controls():
+	in_control = true
+
+
+func disable_controls():
+	in_control = false
+	velocity = Vector2(0, 0)
+
+
+func kill():
+	# Disable physics and controls
+	$CollisionShape2D.set_deferred("disabled", true)
+	self.set_physics_process(false)
+	disable_controls()
+
+	$Sprite2D.set_visible(false)
+
+
+func _physics_process(delta):
+	velocity.y += delta * gravity
+	if in_control:
+		get_input()
+	move_and_slide()
+```
+
+Apabila pemain kehabisan lives, game akan berakhir dan pemain harus mengulangi game dari awal. Lives disimpan sebagai variabel global dengan DeathArea yang akan menangani logika kematian. Untuk menyesuaikan sistem baru dengan implementasi sebelumnya, Fish dan Saw mendapat sedikit modifikasi.
+
+```py
+# Fish.gd
+extends RigidBody2D
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.get_name() == "Player":
+		self.set_deferred("freeze", true)
+		self.hide()
+	else:
+		self.queue_free()
+```
+
+```py
+# Saw.gd
+extends RigidBody2D
+
+
+func _ready() -> void:
+	$DeletionTimer.start()
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.get_name() == "Player":
+		self.set_deferred("freeze", true)
+		$CollisionShape2D.set_deferred("disabled", true)
+		$DeletionTimer.stop()
+		self.hide()
+	elif body.get_name() == "DeathPlane":
+		self.queue_free()
+
+
+func _on_DeletionTimer_timeout() -> void:
+	self.queue_free()
+```
+
+#### BGM and SFX
+Controller global untuk memainkan BGM telah diterapkan sesuai dengan implementasi yang telah saya lakukan di Tutorial 5. Sejumlah SFX juga telah ditambahkan untuk aksi berikut: Player meloncat, Player mati, dan roket Goal meluncur. Terlebih lagi, audio bus terpisah telah dialokasikan untuk BGM dan SFX.
+
+```py
+#BGMController.gd
+extends Node
+
+@onready var bgm = {
+	"Menu": load("res://assets/bgm/menu.ogg"),
+	"Game": load("res://assets/bgm/gameplay.ogg"),
+	"Win": load("res://assets/bgm/win.ogg"),
+	"Lose": load("res://assets/bgm/gameover.ogg"),
+}
+
+
+func _ready() -> void:
+	$BGM.stream = bgm.Menu
+	$BGM.play()
+
+
+func play() -> void:
+	$BGM.play()
+
+
+func stop() -> void:
+	$BGM.stop()
+
+
+func change_music(music) -> void:
+	$BGM.stream = bgm[music]
+	$BGM.play()
+```
+
+```py
+# Player.gd
+@onready var sfx = {
+	"Jump": $SFX/Jump,
+	"Die": $SFX/Die,
+}
+
+
+func get_input():
+	velocity.x = 0
+	if is_on_floor() and Input.is_action_just_pressed("jump"):
+		velocity.y = jump_speed
+		sfx.Jump.play()
+	...
+
+func kill():
+	$CollisionShape2D.set_deferred("disabled", true)
+	self.set_physics_process(false)
+	disable_controls()
+
+	$Sprite2D.set_visible(false)
+	sfx.Die.play()
+```
+
+### B. Level UI
+Saat berada di dalam level, terdapat beberapa elemen UI yang dapat dilihat dan ditampilkan kepada pemain.
+
+#### Lives Counter
+Counter yang menghitung jumlah lives dari pemain dapat ditemukan pada sudut kiri atas layar. Tampilan dari counter akan segera update setelah pemain mati.
+![](./docs/lives_counter.png)
+
+
+#### Pausing and Pause Menu
+Pemain dapat menghentikan level sejenak dengan menekan tombol Pause di sudut kanan atas layar. Saat ditekan, proses permainan di dalam level akan berhenti dan Pause Menu akan ditampilkan. Di dalam Pause Menu, pemain dapat memilih Resume untuk melanjutkan permainan atau Quit Game untuk kembali ke Main Menu.
+
+![](./docs/pause_menu.png)
+
+#### Level Clear Menu
+Sebelumnya, berpindah antara level terjadi secara langsung setelah menyentuh Goal berbentuk roket. Sekarang, game akan menunggu sejenak sebelum menampilkan Level Clear Menu untuk menandakan pemain telah melewati level. Di dalam Level Clear Menu, pemain dapat memilih Continue untuk lanjut ke level berikutnya atau Quit Game untuk kembali ke Main Menu.
+
+![](./docs/clear_menu.png)
+
+Level Clear Menu disimpan di dalam satu scene dengan Goal. Goal sendiri telah ditambahkan properti baru bernama "Last". Apabila diaktifkan, Goal berperan sebagai akhir dari game. Saat aktif, Level Clear Menu hanya akan menampilkan opsi Continue. Memilih Continue akan melanjutkan pemain ke Win Screen.
+
+![](./docs/goal_last.png)
+![](./docs/clear_last.png)
+
+Saat properti "Last" aktif, properti sebelumnya yang menentukan scene yang akan diload berikutnya tidak digunakan. Untuk berjaga-jaga, properti tersebut akan dibuat Read-Only apabila "Last" diaktifkan.
+
+```py
+# Goal.gd
+@export var last: bool:
+	set(value):
+		last = value
+		notify_property_list_changed()
+@export var scene_to_load: String = "Level1"
+
+func _validate_property(property: Dictionary):
+	if property.name == "scene_to_load" and last:
+		property.usage |= PROPERTY_USAGE_READ_ONLY
+```
+
+### C. Main Menu
+Game dimulai dari sebuah Main Menu yang memiliki sejumlah opsi.
+
+![](./docs/main_menu.png)
+
+#### Start Game
+Opsi ini akan memulai game dari level pertama dan akan berlangsung hingga pemain menang, kalah, atau sengaja keluar dari game. Setiap kali game dimulai, lives pemain diset kembali menjadi 3.
+
+#### Level Select
+Opsi ini akan memindahkan pemain ke menu Level Select. Di menu tersebut, pemain dapat memilih level mana ia akan memulai game. Untuk tutorial ini, terdapat 4 level yang dapat dipilih. Jumlah lives pemain juga akan reset seperti pada opsi Start Game.
+
+![](./docs/level_select.png)
+
+#### Options
+Opsi ini akan menampilkan Options Menu dalam bentuk pop-up. Di menu tersebut, terdapat sejumlah slider yang dapat digunakan untuk mengatur volume dari audio game. Terdapat 3 slider untuk ketiga audio bus yang ada: Master Volume (semua suara), Music Volume, dan SFX Volume. Dengan ini, pemain dapat mengatur audio secara lebih presisi. Terdapat tombol X di sudut kiri atas menu yang akan menutup menu saat ditekan.
+
+![](./docs/options_menu.png)
+
+#### Credits
+Opsi ini akan menampilkan Credits Menu dalam bentuk pop-up. Di menu tersebut, terdapat informasi mengenai asset-asset bawaan yang digunakan dalam game ini. Informasi terbagi menjadi 3 bagian: Music, SFX, dan Art. Isi dari Credits Menu dibaca langsung dari file teks assets/credits.txt dan disimpan ke dalam label saat node menu diciptakan.
+
+![](./docs/credits_menu.png)
+
+### D. Additional Polishing
+
+Berikut merupakan beberapa hal lain yang saya lakukan saat mengerjakan tutorial.
+
+#### Level Clear Animation
+Setelah mencapai Goal, terdapat animasi baru yang menampilkan roket meluncur ke angkasa. Animasi ini dihasilkan dengan AnimationPlayer, SFX untuk suara roket, dan sprite baru untuk api roket.
+
+![](./docs/rocket_fly.png)
+
+#### Win and Game Over Screens
+Win Screen dan Game Over Screen telah ditingkatkan dengan menggunakan node-node Control dan BGM khusus. Sekarang, terdapat opsi Back to Main Menu agar pemain dapat kembali mengulang game setelah mencapai salah satu screen tersebut.
+
+![](./docs/win_screen.png)
+![](./docs/game_over_screen.png)
+
+#### Global Fade Transitions
+Terdapat animasi Fade In dan Fade Out yang terjadi saat berganti scene. Transisi tersebut digunakan untuk memperhubungkan antar scene dengan lebih mulus dan memberikan waktu untuk mempersiapkan scene sepenuhnya (cth. memposisikan kamera kepada Player dengan benar saat memulai level). Transisi memanfaatkan node CanvasLayer yang telah diletakkan pada layer tinggi dan sebuah ColorRect.
+
+![](./docs/game_over_screen.png)
+
+
+#### Global Background
+Pada global scene yang sama dengan transisi fade, sebuah background langit telah ditambahkan untuk melengkapi penampilan dari game.
+
+## Assets
+
+```
+[ Music ]
+"Call to Adventure" by Kevin MacLeod - Incompetech
+"Heartbreaking" by Kevin MacLeod - Incompetech
+"Who Likes to Party" by Kevin MacLeod - Incompetech
+"Local Forecast - Elevator" by Kevin MacLeod - Incompetech
+
+[ SFX ]
+"Retro video game sfx - Explode" by OwlStorm - freesound.org
+"male_hurt8.ogg" by micahlg - Freesound.org
+"jump boing" by 1bob - Freesound.org
+
+[ Art ]
+"Platformer Pack Redux" by Kenney Assets - Kenney.nl
+"Platformer Tileset" by Thanshuny Wolf - itch.io
+```
+
+## Referensi dan Resources
+
+- Tutorial's GitHub page: https://csui-game-development.github.io/tutorials/tutorial-4/
+- Official Godot GDScript reference: https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_basics.html
+- Official Godot Engine forums: https://forum.godotengine.org/
+- Creating volume sliders in Godot 4 by The Shaggy Dev: https://youtu.be/aFkRmtGiZCw
+- Ability to dynamically hide exported variables in the inspector - godot-proposals GitHub issue: https://github.com/godotengine/godot-proposals/issues/1056
+---
