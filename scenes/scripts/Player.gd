@@ -32,6 +32,7 @@ func disable_controls():
 
 
 func kill():
+	$CollisionShape2D.set_deferred("disabled", true)
 	disable_controls()
 	$Sprite2D.set_visible(false)
 	sfx.Die.play()

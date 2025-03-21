@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c07ekl6lwxi2u"]
+[gd_scene load_steps=6 format=3 uid="uid://c07ekl6lwxi2u"]
 
 [ext_resource type="Texture2D" uid="uid://bivk5n8i3vnqc" path="res://assets/kenney_platformerpack/PNG/Enemies/fishBlue.png" id="1_csds5"]
 [ext_resource type="Script" path="res://scenes/scripts/Fish.gd" id="1_f2tcm"]
+[ext_resource type="Script" path="res://scenes/scripts/DeathArea.gd" id="3_tnveq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dvj5x"]
 radius = 31.0
@@ -23,9 +24,11 @@ shape = SubResource("CapsuleShape2D_dvj5x")
 disabled = true
 
 [node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("3_tnveq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CapsuleShape2D_i6nyt")
 debug_color = Color(0.872859, 0.30803, 0.424031, 0.42)
 
-[connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="HurtBox" to="HurtBox" method="_on_body_entered"]

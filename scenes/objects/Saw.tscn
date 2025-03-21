@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bd3tws38d5fc5"]
+[gd_scene load_steps=6 format=3 uid="uid://bd3tws38d5fc5"]
 
 [ext_resource type="Script" path="res://scenes/scripts/Saw.gd" id="1_pvrl6"]
 [ext_resource type="Texture2D" uid="uid://dvv3mspleuvvy" path="res://assets/kenney_platformerpack/PNG/Enemies/saw.png" id="2_tjcg4"]
+[ext_resource type="Script" path="res://scenes/scripts/DeathArea.gd" id="3_p8w30"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fbam4"]
 radius = 39.0
@@ -20,6 +21,7 @@ texture = ExtResource("2_tjcg4")
 shape = SubResource("CircleShape2D_fbam4")
 
 [node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("3_p8w30")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CircleShape2D_eu6jx")
@@ -28,5 +30,6 @@ debug_color = Color(0.930679, 0.242233, 0.271237, 0.42)
 [node name="DeletionTimer" type="Timer" parent="."]
 wait_time = 10.0
 
-[connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="HurtBox" to="HurtBox" method="_on_body_entered"]
 [connection signal="timeout" from="DeletionTimer" to="." method="_on_DeletionTimer_timeout"]

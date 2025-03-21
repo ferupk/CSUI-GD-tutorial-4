@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://blcfbk7gt6ut4"]
+[gd_scene load_steps=9 format=4 uid="uid://blcfbk7gt6ut4"]
 
 [ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/objects/Player.tscn" id="1_25qal"]
 [ext_resource type="Texture2D" uid="uid://ce3cnsg6oo47k" path="res://assets/Thanshuny-Wolf Platformer Tilemap.png" id="2_nuwn7"]
 [ext_resource type="PackedScene" uid="uid://cwwi0q43m4y78" path="res://scenes/objects/SawSpawner.tscn" id="3_4qsy5"]
-[ext_resource type="PackedScene" uid="uid://b1mt0bxm8wg2b" path="res://scenes/utils/SceneChanger.tscn" id="4_antf6"]
-[ext_resource type="Texture2D" uid="uid://chgqimvh7rdh6" path="res://assets/Familiar Looking Rocket.png" id="5_g0tbl"]
+[ext_resource type="PackedScene" uid="uid://cortb7xf15s16" path="res://scenes/utils/DeathArea.tscn" id="5_hfxc2"]
 [ext_resource type="PackedScene" uid="uid://bdgufxoe5wk41" path="res://scenes/gui/LifeCounter.tscn" id="6_8ap16"]
 [ext_resource type="PackedScene" uid="uid://cay0sj4kxopnx" path="res://scenes/objects/Goal.tscn" id="7_i6bar"]
 
@@ -121,7 +120,7 @@ tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAAD//wEAAAAAAAEAAAD//wIAAAAAAAE
 tile_set = SubResource("TileSet_4hkma")
 
 [node name="Goal" parent="." instance=ExtResource("7_i6bar")]
-position = Vector2(8556, -522)
+position = Vector2(8556, -544)
 last = true
 
 [node name="Spawners" type="Node2D" parent="."]
@@ -147,21 +146,9 @@ spawn_interval = 1.5
 position = Vector2(7235, -443)
 spawn_interval = 3.5
 
-[node name="RocketGoal" parent="." instance=ExtResource("4_antf6")]
-position = Vector2(8556, -522)
-scale = Vector2(1, 2)
-scene_name = "WinScreen"
-
-[node name="FamiliarLookingRocket" type="Sprite2D" parent="RocketGoal"]
-z_index = -1
-position = Vector2(0, -11)
-scale = Vector2(0.4, 0.2)
-texture = ExtResource("5_g0tbl")
-
-[node name="DeathPlane" parent="." instance=ExtResource("4_antf6")]
+[node name="DeathArea" parent="." instance=ExtResource("5_hfxc2")]
 position = Vector2(4323, 673)
 scale = Vector2(137, 1)
-scene_name = "Level2"
 
 [node name="HelpText" type="Node2D" parent="."]
 
