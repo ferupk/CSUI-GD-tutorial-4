@@ -11,4 +11,5 @@ theme_override_constants/margin_top = 16
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_0irhl")
 theme_override_font_sizes/font_size = 32
+text = "Lives"
 script = ExtResource("1_mcbr2")

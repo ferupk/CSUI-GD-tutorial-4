@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c2elrwhkhqssr" path="res://assets/spritesheet_gr_dirt_ALT.png" id="3_0id5q"]
 [ext_resource type="PackedScene" uid="uid://b8ht7fx7phrhf" path="res://scenes/objects/FishSpawner.tscn" id="5_1qki3"]
 [ext_resource type="PackedScene" uid="uid://cortb7xf15s16" path="res://scenes/utils/DeathArea.tscn" id="5_hfxc2"]
-[ext_resource type="PackedScene" uid="uid://bdgufxoe5wk41" path="res://scenes/gui/LifeCounter.tscn" id="6_8ap16"]
+[ext_resource type="PackedScene" uid="uid://d2if0abj5kbo6" path="res://scenes/gui/LevelUI.tscn" id="7_0401r"]
 [ext_resource type="PackedScene" uid="uid://cay0sj4kxopnx" path="res://scenes/objects/Goal.tscn" id="7_i6bar"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_raf4p"]
@@ -121,6 +121,4 @@ offset_bottom = -16.0
 bbcode_enabled = true
 text = "[font=res://assets/fonts/Rodin-Pro-DB.otf]Almost there, be careful!"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="LifeCounter" parent="CanvasLayer" instance=ExtResource("6_8ap16")]
+[node name="LevelUI" parent="." instance=ExtResource("7_0401r")]

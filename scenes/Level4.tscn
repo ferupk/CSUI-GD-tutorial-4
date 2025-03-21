@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cay0sj4kxopnx" path="res://scenes/objects/Goal.tscn" id="3_oq5bs"]
 [ext_resource type="PackedScene" uid="uid://cwwi0q43m4y78" path="res://scenes/objects/SawSpawner.tscn" id="4_iw37w"]
 [ext_resource type="PackedScene" uid="uid://cortb7xf15s16" path="res://scenes/utils/DeathArea.tscn" id="5_1gbkt"]
-[ext_resource type="PackedScene" uid="uid://bdgufxoe5wk41" path="res://scenes/gui/LifeCounter.tscn" id="6_4ifgx"]
+[ext_resource type="PackedScene" uid="uid://d2if0abj5kbo6" path="res://scenes/gui/LevelUI.tscn" id="6_qin6t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pkrcb"]
 texture = ExtResource("2_ennb7")
@@ -163,7 +163,4 @@ offset_bottom = -575.0
 bbcode_enabled = true
 text = "[font=res://assets/fonts/Rodin-Pro-DB.otf]Congratulations!!!"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="LifeCounter" parent="CanvasLayer" instance=ExtResource("6_4ifgx")]
-metadata/_edit_use_anchors_ = true
+[node name="LevelUI" parent="." instance=ExtResource("6_qin6t")]
