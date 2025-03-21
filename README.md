@@ -4,6 +4,9 @@
 - **NPM:** 2106750351
 - **Topic:** Basic 2D Level Design
 
+Commit: [d58855e](https://github.com/ferupk/CSUI-GD-tutorial-4/tree/d58855edb87393ca4cd3b627834f8550964a42e0)<br>
+Branch: [main](https://github.com/ferupk/CSUI-GD-tutorial-4/tree/main)
+
 ---
 
 ## Latihan Mandiri: Membuat Level Baru Dengan Tile Map & Obstacle Berbeda
@@ -298,6 +301,9 @@ func _ready() -> void:
 - **Name:** Feru Pratama Kartajaya
 - **NPM:** 2106750351
 - **Topic:** Menu and In-Game Graphical User Interface
+
+Commit: [0b47fa0](https://github.com/ferupk/CSUI-GD-tutorial-4/tree/0b47fa0c231b9b9d159e637c6bd739898fb44ad3)<br>
+Branch: [tutorial-6](https://github.com/ferupk/CSUI-GD-tutorial-4/tree/tutorial-6)
 
 ---
 
