@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://kvgpb4mnt46g"]
+[gd_scene load_steps=7 format=3 uid="uid://kvgpb4mnt46g"]
 
 [ext_resource type="FontFile" uid="uid://cth60gqdxo73p" path="res://assets/fonts/continuum bold.ttf" id="1_ce12p"]
 [ext_resource type="Script" path="res://scripts/gui/PauseGame.gd" id="2_q44oh"]
 [ext_resource type="Script" path="res://scripts/gui/PopupMenu.gd" id="3_vysc0"]
 [ext_resource type="FontFile" uid="uid://g0e4g4332ft0" path="res://assets/fonts/CC Wild Words Roman.ttf" id="4_2jiqi"]
+[ext_resource type="Texture2D" uid="uid://cp8tmdptglfqa" path="res://assets/Menu Base.png" id="4_ojpam"]
 [ext_resource type="Script" path="res://scripts/gui/SceneButton.gd" id="5_2l50n"]
 
 [node name="PauseButton" type="LinkButton"]
@@ -45,9 +46,10 @@ grow_vertical = 2
 custom_minimum_size = Vector2(720, 480)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PauseMenu/CenterContainer/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PauseMenu/CenterContainer/MarginContainer"]
 layout_mode = 2
-color = Color(0.567826, 0.295048, 0.081781, 1)
+texture = ExtResource("4_ojpam")
+expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu/CenterContainer/MarginContainer"]
 layout_mode = 2

@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhqh0lr0ybi1b"]
+[gd_scene load_steps=6 format=3 uid="uid://dhqh0lr0ybi1b"]
 
 [ext_resource type="FontFile" uid="uid://g0e4g4332ft0" path="res://assets/fonts/CC Wild Words Roman.ttf" id="1_1ofof"]
 [ext_resource type="Script" path="res://scripts/gui/ClearMenu.gd" id="1_hwa4k"]
 [ext_resource type="FontFile" uid="uid://cth60gqdxo73p" path="res://assets/fonts/continuum bold.ttf" id="2_7ubg4"]
+[ext_resource type="Texture2D" uid="uid://cp8tmdptglfqa" path="res://assets/Menu Base.png" id="2_bwuvq"]
+[ext_resource type="Script" path="res://scripts/gui/SceneButton.gd" id="5_fdraj"]
 
 [node name="ClearMenu" type="CenterContainer"]
 anchors_preset = 15
@@ -16,9 +18,10 @@ script = ExtResource("1_hwa4k")
 custom_minimum_size = Vector2(720, 480)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
-color = Color(0.567826, 0.295048, 0.081781, 1)
+texture = ExtResource("2_bwuvq")
+expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -44,6 +47,7 @@ theme_override_fonts/font = ExtResource("2_7ubg4")
 theme_override_font_sizes/font_size = 36
 text = "Continue"
 underline = 2
+script = ExtResource("5_fdraj")
 
 [node name="Quit" type="LinkButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -53,6 +57,7 @@ theme_override_fonts/font = ExtResource("2_7ubg4")
 theme_override_font_sizes/font_size = 36
 text = "Quit Game"
 underline = 2
+script = ExtResource("5_fdraj")
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Continue" to="MarginContainer/VBoxContainer/VBoxContainer/Continue" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Quit" to="MarginContainer/VBoxContainer/VBoxContainer/Quit" method="_on_pressed"]

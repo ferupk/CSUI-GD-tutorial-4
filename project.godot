@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 
 Global="*res://Global.gd"
 BGMController="*res://scenes/utils/BGMController.tscn"
+ScreenFill="*res://scenes/utils/ScreenFill.tscn"
 
 [display]
 
