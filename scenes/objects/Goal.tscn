@@ -1,10 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://cay0sj4kxopnx"]
+[gd_scene load_steps=14 format=3 uid="uid://cay0sj4kxopnx"]
 
 [ext_resource type="Texture2D" uid="uid://chgqimvh7rdh6" path="res://assets/Familiar Looking Rocket.png" id="1_2hwsq"]
 [ext_resource type="Script" path="res://scripts/objects/Goal.gd" id="1_ry8cb"]
 [ext_resource type="Texture2D" uid="uid://bojo6xld4glt6" path="res://assets/Rocket Fire.png" id="3_3vlb2"]
-[ext_resource type="PackedScene" uid="uid://dhqh0lr0ybi1b" path="res://scenes/gui/ClearMenu.tscn" id="3_3382u"]
+[ext_resource type="Script" path="res://scripts/gui/PopupMenu.gd" id="4_jjnnm"]
 [ext_resource type="AudioStream" uid="uid://qr7qf6mjfk6p" path="res://assets/sfx/rocketlaunch.wav" id="5_iokjp"]
+[ext_resource type="Texture2D" uid="uid://cp8tmdptglfqa" path="res://assets/Menu Base.png" id="5_tt1rs"]
+[ext_resource type="FontFile" uid="uid://g0e4g4332ft0" path="res://assets/fonts/CC Wild Words Roman.ttf" id="6_gcy8n"]
+[ext_resource type="FontFile" uid="uid://cth60gqdxo73p" path="res://assets/fonts/continuum bold.ttf" id="7_xonbh"]
+[ext_resource type="Script" path="res://scripts/gui/SceneButton.gd" id="8_honin"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p5bgw"]
 size = Vector2(64, 128)
@@ -121,12 +125,63 @@ texture = ExtResource("3_3vlb2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ClearMenu" parent="CanvasLayer" instance=ExtResource("3_3382u")]
+[node name="ClearMenu" type="CenterContainer" parent="CanvasLayer"]
 visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = -360.0
 offset_top = -240.0
 offset_right = 360.0
 offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_jjnnm")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ClearMenu"]
+custom_minimum_size = Vector2(720, 480)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ClearMenu/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("5_tt1rs")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ClearMenu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/ClearMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("6_gcy8n")
+theme_override_font_sizes/font_size = 72
+text = "Level Cleared!"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ClearMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Continue" type="LinkButton" parent="CanvasLayer/ClearMenu/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0.843137, 0, 1)
+theme_override_fonts/font = ExtResource("7_xonbh")
+theme_override_font_sizes/font_size = 36
+text = "Continue"
+underline = 2
+script = ExtResource("8_honin")
+
+[node name="Quit" type="LinkButton" parent="CanvasLayer/ClearMenu/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.439216, 0.615686, 1, 1)
+theme_override_fonts/font = ExtResource("7_xonbh")
+theme_override_font_sizes/font_size = 36
+text = "Quit Game"
+underline = 2
+script = ExtResource("8_honin")
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_iokjp")
@@ -135,3 +190,5 @@ pitch_scale = 0.4
 bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="pressed" from="CanvasLayer/ClearMenu/MarginContainer/VBoxContainer/VBoxContainer/Continue" to="CanvasLayer/ClearMenu/MarginContainer/VBoxContainer/VBoxContainer/Continue" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/ClearMenu/MarginContainer/VBoxContainer/VBoxContainer/Quit" to="CanvasLayer/ClearMenu/MarginContainer/VBoxContainer/VBoxContainer/Quit" method="_on_pressed"]

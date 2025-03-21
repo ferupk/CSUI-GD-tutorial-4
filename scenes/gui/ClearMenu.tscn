@@ -1,10 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhqh0lr0ybi1b"]
+[gd_scene load_steps=6 format=3 uid="uid://7o0p7kio28hi"]
 
 [ext_resource type="FontFile" uid="uid://g0e4g4332ft0" path="res://assets/fonts/CC Wild Words Roman.ttf" id="1_1ofof"]
-[ext_resource type="Script" path="res://scripts/gui/ClearMenu.gd" id="1_hwa4k"]
 [ext_resource type="FontFile" uid="uid://cth60gqdxo73p" path="res://assets/fonts/continuum bold.ttf" id="2_7ubg4"]
 [ext_resource type="Texture2D" uid="uid://cp8tmdptglfqa" path="res://assets/Menu Base.png" id="2_bwuvq"]
 [ext_resource type="Script" path="res://scripts/gui/SceneButton.gd" id="5_fdraj"]
+
+[sub_resource type="GDScript" id="GDScript_ja72a"]
+script/source = "extends Control
+
+@export var scene: String = \"MainMenu\"
+@onready var continue_button = $MarginContainer/VBoxContainer/VBoxContainer/Continue
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	self.hide()
+	print(\"CM\" + scene)
+	continue_button.scene_to_load = scene
+
+func set_scene()
+"
 
 [node name="ClearMenu" type="CenterContainer"]
 anchors_preset = 15
@@ -12,7 +27,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_hwa4k")
+script = SubResource("GDScript_ja72a")
+scene = null
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(720, 480)

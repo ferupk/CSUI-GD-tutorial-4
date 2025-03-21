@@ -7,6 +7,9 @@ extends Area2D
 		notify_property_list_changed()
 @export var scene_to_load: String = "Level1"
 
+@onready var continue_button = $CanvasLayer/ClearMenu/MarginContainer/VBoxContainer/VBoxContainer/Continue
+@onready var quit_button = $CanvasLayer/ClearMenu/MarginContainer/VBoxContainer/VBoxContainer/Quit
+
 
 func _validate_property(property: Dictionary):
 	if property.name == "scene_to_load" and last:
@@ -15,9 +18,10 @@ func _validate_property(property: Dictionary):
 
 func _ready() -> void:
 	if last:
-		$CanvasLayer/ClearMenu.scene = "WinScreen"
+		continue_button.scene_to_load = "WinScreen"
+		quit_button.queue_free()
 	else:
-		$CanvasLayer/ClearMenu.scene = scene_to_load
+		continue_button.scene_to_load = scene_to_load
 
 
 func _on_body_entered(body):
