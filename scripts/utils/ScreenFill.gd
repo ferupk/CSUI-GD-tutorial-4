@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Node
 
 
 func _ready() -> void:
@@ -6,12 +6,12 @@ func _ready() -> void:
 
 
 func fade_in() -> void:
-	self.visible = true
-	$AnimationPlayer.play("ForegroundIn")
-	await $AnimationPlayer.animation_finished
+	$Foreground.visible = true
+	$Foreground/AnimationPlayer.play("ForegroundIn")
+	await $Foreground/AnimationPlayer.animation_finished
 
 
 func fade_out() -> void:
-	$AnimationPlayer.play("ForegroundOut")
-	await $AnimationPlayer.animation_finished
-	self.visible = false
+	$Foreground/AnimationPlayer.play("ForegroundOut")
+	await $Foreground/AnimationPlayer.animation_finished
+	$Foreground.visible = false

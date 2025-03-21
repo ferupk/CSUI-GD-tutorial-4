@@ -7,7 +7,8 @@ extends Area2D
 		notify_property_list_changed()
 @export var scene_to_load: String = "Level1"
 
-@onready var continue_button = $CanvasLayer/ClearMenu/MarginContainer/VBoxContainer/VBoxContainer/Continue
+@onready
+var continue_button = $CanvasLayer/ClearMenu/MarginContainer/VBoxContainer/VBoxContainer/Continue
 @onready var quit_button = $CanvasLayer/ClearMenu/MarginContainer/VBoxContainer/VBoxContainer/Quit
 
 

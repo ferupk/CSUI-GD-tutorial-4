@@ -1,6 +1,39 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxu3kk5b1rdou"]
+[gd_scene load_steps=7 format=3 uid="uid://dxu3kk5b1rdou"]
 
 [ext_resource type="Script" path="res://scripts/utils/ScreenFill.gd" id="1_66yt1"]
+[ext_resource type="Texture2D" uid="uid://dwm5l8epta2eo" path="res://assets/Sky Background.jpg" id="2_ejwf6"]
+
+[sub_resource type="Animation" id="Animation_6wvdw"]
+resource_name = "ForegroundIn"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Foreground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xq8n0"]
+resource_name = "ForegroundOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Foreground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_7yytr"]
 length = 0.001
@@ -29,38 +62,6 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_xq8n0"]
-resource_name = "ForegroundOut"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Foreground:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_6wvdw"]
-resource_name = "ForegroundIn"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Foreground:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(2, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w6t6s"]
 _data = {
 "ForegroundIn": SubResource("Animation_6wvdw"),
@@ -68,11 +69,19 @@ _data = {
 "RESET": SubResource("Animation_7yytr")
 }
 
-[node name="ScreenFill" type="CanvasLayer"]
-layer = 128
+[node name="ScreenFill" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_66yt1")
 
-[node name="Foreground" type="ColorRect" parent="."]
+[node name="Foreground" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="Foreground" type="ColorRect" parent="Foreground"]
 z_index = 4096
 anchors_preset = 15
 anchor_right = 1.0
@@ -81,7 +90,15 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground"]
 libraries = {
 "": SubResource("AnimationLibrary_w6t6s")
 }
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -128
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_ejwf6")
