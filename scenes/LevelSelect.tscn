@@ -2,8 +2,8 @@
 
 [ext_resource type="FontFile" uid="uid://g0e4g4332ft0" path="res://assets/fonts/CC Wild Words Roman.ttf" id="1_hcixs"]
 [ext_resource type="FontFile" uid="uid://cth60gqdxo73p" path="res://assets/fonts/continuum bold.ttf" id="2_w5sil"]
-[ext_resource type="Script" path="res://scenes/scripts/SceneButton.gd" id="3_k053y"]
-[ext_resource type="Script" path="res://scenes/scripts/StartGame.gd" id="4_kn8yx"]
+[ext_resource type="Script" path="res://scripts/gui/SceneButton.gd" id="3_sytnh"]
+[ext_resource type="Script" path="res://scripts/StartGame.gd" id="4_kn8yx"]
 
 [node name="LevelSelect" type="MarginContainer"]
 anchors_preset = 15
@@ -37,7 +37,7 @@ theme_override_fonts/font = ExtResource("2_w5sil")
 theme_override_font_sizes/font_size = 72
 text = "1"
 underline = 2
-script = ExtResource("3_k053y")
+script = ExtResource("3_sytnh")
 scene_to_load = "Level1"
 
 [node name="LinkButton2" type="LinkButton" parent="VBoxContainer/HBoxContainer"]
@@ -47,7 +47,7 @@ theme_override_fonts/font = ExtResource("2_w5sil")
 theme_override_font_sizes/font_size = 72
 text = "2"
 underline = 2
-script = ExtResource("3_k053y")
+script = ExtResource("3_sytnh")
 scene_to_load = "Level2"
 
 [node name="LinkButton3" type="LinkButton" parent="VBoxContainer/HBoxContainer"]
@@ -57,7 +57,7 @@ theme_override_fonts/font = ExtResource("2_w5sil")
 theme_override_font_sizes/font_size = 72
 text = "3"
 underline = 2
-script = ExtResource("3_k053y")
+script = ExtResource("3_sytnh")
 scene_to_load = "Level3"
 
 [node name="LinkButton4" type="LinkButton" parent="VBoxContainer/HBoxContainer"]
@@ -67,7 +67,7 @@ theme_override_fonts/font = ExtResource("2_w5sil")
 theme_override_font_sizes/font_size = 72
 text = "4"
 underline = 2
-script = ExtResource("3_k053y")
+script = ExtResource("3_sytnh")
 scene_to_load = "Level4"
 
 [node name="StartGame" type="Node2D" parent="VBoxContainer/HBoxContainer"]
@@ -77,7 +77,7 @@ script = ExtResource("4_kn8yx")
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/LinkButton" to="VBoxContainer/HBoxContainer/StartGame" method="_start_game"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/LinkButton2" to="VBoxContainer/HBoxContainer/LinkButton2" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/LinkButton2" to="VBoxContainer/HBoxContainer/StartGame" method="_start_game"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/LinkButton3" to="VBoxContainer/HBoxContainer/StartGame" method="_start_game"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/LinkButton3" to="VBoxContainer/HBoxContainer/LinkButton3" method="_on_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/LinkButton4" to="VBoxContainer/HBoxContainer/StartGame" method="_start_game"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LinkButton3" to="VBoxContainer/HBoxContainer/StartGame" method="_start_game"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/LinkButton4" to="VBoxContainer/HBoxContainer/LinkButton4" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LinkButton4" to="VBoxContainer/HBoxContainer/StartGame" method="_start_game"]

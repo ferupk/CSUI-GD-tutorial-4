@@ -2,9 +2,9 @@
 
 [ext_resource type="FontFile" uid="uid://g0e4g4332ft0" path="res://assets/fonts/CC Wild Words Roman.ttf" id="1_1mupm"]
 [ext_resource type="Texture2D" uid="uid://bi5p7hlw4wlhv" path="res://assets/dead.jpg" id="1_g8amc"]
-[ext_resource type="Script" path="res://scenes/scripts/GameOver.gd" id="1_nir6n"]
+[ext_resource type="Script" path="res://scripts/GameOver.gd" id="1_nir6n"]
 [ext_resource type="FontFile" uid="uid://cth60gqdxo73p" path="res://assets/fonts/continuum bold.ttf" id="3_lkjdw"]
-[ext_resource type="Script" path="res://scenes/scripts/SceneButton.gd" id="4_vtnhv"]
+[ext_resource type="Script" path="res://scripts/gui/SceneButton.gd" id="4_vtnhv"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3

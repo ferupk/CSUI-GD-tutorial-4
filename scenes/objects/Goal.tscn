@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cay0sj4kxopnx"]
 
 [ext_resource type="Texture2D" uid="uid://chgqimvh7rdh6" path="res://assets/Familiar Looking Rocket.png" id="1_2hwsq"]
-[ext_resource type="Script" path="res://scenes/scripts/Goal.gd" id="1_ry8cb"]
+[ext_resource type="Script" path="res://scripts/objects/Goal.gd" id="1_ry8cb"]
 [ext_resource type="Texture2D" uid="uid://bojo6xld4glt6" path="res://assets/Rocket Fire.png" id="3_3vlb2"]
 [ext_resource type="PackedScene" uid="uid://dhqh0lr0ybi1b" path="res://scenes/gui/ClearMenu.tscn" id="3_3382u"]
 [ext_resource type="AudioStream" uid="uid://qr7qf6mjfk6p" path="res://assets/sfx/rocketlaunch.wav" id="5_iokjp"]

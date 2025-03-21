@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://chxbgcqp1lme3"]
 
-[ext_resource type="Script" path="res://scenes/scripts/VolumeSlider.gd" id="1_6ukwg"]
+[ext_resource type="Script" path="res://scripts/gui/VolumeSlider.gd" id="1_6ukwg"]
 
 [node name="VolumeSlider" type="HSlider"]
 max_value = 1.0

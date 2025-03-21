@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://bc2fujtl13g10"]
 
-[ext_resource type="Script" path="res://scenes/scripts/Player.gd" id="1_xsgpf"]
+[ext_resource type="Script" path="res://scripts/objects/Player.gd" id="1_r2xlc"]
 [ext_resource type="Texture2D" uid="uid://dhsqj8dybb7fq" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_alien.png" id="2"]
-[ext_resource type="Script" path="res://scenes/scripts/PlayerCamera.gd" id="3_u8esg"]
+[ext_resource type="Script" path="res://scripts/objects/PlayerCamera.gd" id="3_2c0hq"]
 [ext_resource type="AudioStream" uid="uid://bdvcq7vat85eg" path="res://assets/sfx/playerjump.wav" id="4_jbe1v"]
 [ext_resource type="AudioStream" uid="uid://b8v6kcksy5f11" path="res://assets/sfx/playerdie.ogg" id="5_im3jv"]
 
@@ -65,7 +65,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_xsgpf")
+script = ExtResource("1_r2xlc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("1")
@@ -96,7 +96,7 @@ drag_right_margin = 0.05
 drag_bottom_margin = 0.0
 editor_draw_limits = true
 editor_draw_drag_margin = true
-script = ExtResource("3_u8esg")
+script = ExtResource("3_2c0hq")
 
 [node name="SFX" type="Node" parent="."]
 

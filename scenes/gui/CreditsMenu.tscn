@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://1jpc26jwys84"]
 
 [ext_resource type="FontFile" uid="uid://g0e4g4332ft0" path="res://assets/fonts/CC Wild Words Roman.ttf" id="1_kmktj"]
-[ext_resource type="Script" path="res://scenes/scripts/PopupMenu.gd" id="1_m0dcc"]
-[ext_resource type="Script" path="res://scenes/scripts/CreditsText.gd" id="3_8mrh2"]
+[ext_resource type="Script" path="res://scripts/gui/PopupMenu.gd" id="1_m0dcc"]
+[ext_resource type="Script" path="res://scripts/gui/CreditsText.gd" id="3_8mrh2"]
 [ext_resource type="FontFile" uid="uid://cth60gqdxo73p" path="res://assets/fonts/continuum bold.ttf" id="3_hl580"]
 
 [node name="CreditsMenu" type="Control"]
