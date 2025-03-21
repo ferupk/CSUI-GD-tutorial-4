@@ -50,6 +50,26 @@ underline = 2
 script = ExtResource("3_k053y")
 scene_to_load = "Level2"
 
+[node name="LinkButton3" type="LinkButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.980507, 0.876845, 2.31028e-06, 1)
+theme_override_fonts/font = ExtResource("2_w5sil")
+theme_override_font_sizes/font_size = 72
+text = "3"
+underline = 2
+script = ExtResource("3_k053y")
+scene_to_load = "Level3"
+
+[node name="LinkButton4" type="LinkButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.980507, 0.876845, 2.31028e-06, 1)
+theme_override_fonts/font = ExtResource("2_w5sil")
+theme_override_font_sizes/font_size = 72
+text = "4"
+underline = 2
+script = ExtResource("3_k053y")
+scene_to_load = "Level4"
+
 [node name="StartGame" type="Node2D" parent="VBoxContainer/HBoxContainer"]
 script = ExtResource("4_kn8yx")
 
@@ -57,3 +77,7 @@ script = ExtResource("4_kn8yx")
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/LinkButton" to="VBoxContainer/HBoxContainer/StartGame" method="_start_game"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/LinkButton2" to="VBoxContainer/HBoxContainer/LinkButton2" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/LinkButton2" to="VBoxContainer/HBoxContainer/StartGame" method="_start_game"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LinkButton3" to="VBoxContainer/HBoxContainer/StartGame" method="_start_game"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LinkButton3" to="VBoxContainer/HBoxContainer/LinkButton3" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LinkButton4" to="VBoxContainer/HBoxContainer/StartGame" method="_start_game"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LinkButton4" to="VBoxContainer/HBoxContainer/LinkButton4" method="_on_pressed"]
